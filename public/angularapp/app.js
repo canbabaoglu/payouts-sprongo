@@ -1,0 +1,1 @@
+var sprongoPayouts = angular.module('sprongoPayouts', ['ngRoute']);
