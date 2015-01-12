@@ -7,7 +7,8 @@
     <base href="/" />
 
     <!-- CSS FILES -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"> 
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"> 
     <link rel="stylesheet" href="styles/payouts.css">
 </head>
 
@@ -32,7 +33,7 @@
         </nav>
         
 
-        <div class="row page-content">
+        <div class="row page-content container-fluid">
             <div ng-view></div>
         </div>
     </div>
@@ -49,6 +50,7 @@
     <script src="angularapp/routes.js"></script>
     <script src="angularapp/controllers/headerController.js"></script>
     <script src="angularapp/controllers/payoutsController.js"></script>
+    <script src="angularapp/directives/payoutRecipient.js"></script>
 
 
 

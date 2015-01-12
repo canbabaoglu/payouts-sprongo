@@ -1,1 +1,9 @@
-<h2>Payouts will go here</h2>
+
+<ul class="list-group">
+	<li class="list-group-item" ng-repeat= "recipient in recipients">
+		<payout-recipient 
+			recipient="recipient" 
+			toggle-recipient-data = "toggleRecipientData(recipient)"
+		></payout-recipient>
+	</li>
+</ul>
