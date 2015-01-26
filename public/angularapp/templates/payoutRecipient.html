@@ -2,16 +2,70 @@
 	<h3 ng-click = 'toggleRecipientData(recipient)'> 
 		<i class = "fa fa-caret-right" ng-hide = "recipient.expanded"></i> 
 		<i class = "fa fa-caret-down"  ng-show = "recipient.expanded"></i> 
-			{{ recipient.name }} 
+			{{ recipient.name }} | Total owed: ${{recipient.recipientPayoutTotal}}
+
 	</h3>
 
-	<div ng-show="recipient.expanded">
-		
-		<ul> 
-			<li ng-repeat= "team in recipient.teams">
-				<h4>{{team.name}}</h4>
-			</li>
-		</ul>
+	<div ng-show="recipient.expanded" class="recipient-data-container"> 
+		<div ng-repeat= "team in recipient.teams">
+			<h4>
+				<ul class="team-info-list" ng-click="toggleTeamData(team)">
+					<li class="team-info-item">
+						<i class = "fa fa-caret-right" ng-hide="team.expandedTeam"></i> 
+						<i class = "fa fa-caret-down" ng-show="team.expandedTeam"></i>
+					</li>
+					<li class="team-info-item"> {{ team.id }} </li>
+					<li class="team-info-item team-info-name"> {{ team.name }} </li>
+					<li class="team-info-item"> ${{ team.price }}/month </li>
+					<li class="team-info-item"> {{ team.commission }}% </li>
+					<liclass="team-info-item"> Total owed: ${{ team.teamPayoutTotal }}</li>
+				</ul>
+			</h4>
+			<table class="table table-stripped payouts-table" ng-show="team.payouts.length > 0 && team.expandedTeam">
+				<thead>
+					<tr>
+						<th>Status</th>
+						<th>Payout Id</th>
+						<th>Amount</th>
+						<th>Date</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="payout in team.payouts"
+						ng-class="{'danger': payout.status === 'pending', 'success': payout.status === 'processed'}"
+					>
+						<td>
+							<i class="fa fa-check-circle status-icon processed-status-icon" ng-show  = "payout.status === 'processed'"></i>
+							<i class="fa fa-times-circle status-icon unprocessed-status-icon" ng-show  = "payout.status != 'processed'"></i>
+							({{ payout.status }})
+						</td>
+						<td>{{payout.payoutId}}</td>
+						<td>${{payout.amount}}</td>
+						<td>{{payout.dueDate}}</td>
+						<td>
+							<button 
+								class    = "btn btn-success"
+								ng-show  = "payout.status != 'processed'"
+								ng-click = "markProcessed(payout)">
+									<i class="fa fa-check-circle"></i> Mark as processed
+							</button>
+							<button 
+								class    = "btn btn-danger"
+								ng-show  = "payout.status != 'pending'"
+								ng-click = "markPending(payout)">
+									Mark as pending
+							</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div 
+				class="alert alert-warning no-payouts-alert" role="alert" 
+				ng-show="team.payouts.length == 0 || team.payouts == null">
+				<h4>This team has no payouts!  They may be cheating the system.</h4>
+			</div>
+		</div>
 	
 	</div>
 	

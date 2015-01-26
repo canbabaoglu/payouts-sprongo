@@ -1,9 +1,26 @@
+<div>
+	<div class="row">
+		<div class="col-md-6">
+			<form>
+				<div class="form-group">
+					<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Search payouts" ng-model = "searchTerm">
+				</div>
+			</form>
+		</div>
+		
+		<div class="col-md-3"></div>
+		<div class="col-md-3">
+			<h3>
+				Total owed: ${{payoutTotal}}	
+			</h3>
+		</div>
+	
+		
+	</div>
 
-<ul class="list-group">
-	<li class="list-group-item" ng-repeat= "recipient in recipients">
-		<payout-recipient 
-			recipient="recipient" 
-			toggle-recipient-data = "toggleRecipientData(recipient)"
-		></payout-recipient>
-	</li>
-</ul>
+	<ul class="list-group">
+		<li class="list-group-item" ng-repeat= "recipient in recipients | filter: searchTerm">
+			<payout-recipient></payout-recipient>
+		</li>
+	</ul>
+</div>

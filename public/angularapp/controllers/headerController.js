@@ -1,6 +1,4 @@
 sprongoPayouts.controller('headerController', ['$scope', function($scope){
-	
-	console.log('I am the headerController');
 
 	$scope.logout = function() {
 

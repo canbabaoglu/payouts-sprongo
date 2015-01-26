@@ -7,3 +7,59 @@
 .page-content {
 	padding-top: 65px;
 }
+
+/* RECIPIENTS */
+
+.recipient-data-container{
+	padding-left: 35px;
+}
+
+/* TEAM PAYOUTS */
+
+.team-info-list {
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.team-info-item {
+	list-style: none;
+	display: inline-block;
+	padding: 5px 20px;
+	border-right: 2px solid #E7E7E7;	
+}
+
+.team-info-item:first-child {
+	padding-left: 0;
+}
+
+.team-info-item:last-child,
+.team-info-item:first-child {
+	border: none;
+}
+
+.team-info-item:first-child {
+	padding-right: 0; 
+}
+
+.team-info-name {
+	min-width: 300px;
+}
+
+.status-icon {
+	font-size: 1.75em;
+}
+
+.processed-status-icon {
+	color: #3C763D;
+}
+
+.unprocessed-status-icon {
+	color: #A94442;
+}
+
+/* LABELS */
+
+.label {
+	float: right;
+	text-align: text-top;
+}

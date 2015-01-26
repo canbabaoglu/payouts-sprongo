@@ -52,6 +52,4 @@
     <script src="angularapp/controllers/payoutsController.js"></script>
     <script src="angularapp/directives/payoutRecipient.js"></script>
 
-
-
 </body>
