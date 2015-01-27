@@ -53,6 +53,10 @@
 
 /* TEAM PAYOUTS */
 
+.team-header.danger {
+	background-color: #F2DEDE;
+}
+
 .team-info-list {
 	padding: 0;
 	box-sizing: border-box;
