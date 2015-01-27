@@ -8,11 +8,48 @@
 	padding-top: 65px;
 }
 
+
 /* RECIPIENTS */
 
 .recipient-data-container{
 	padding-left: 35px;
 }
+
+/* RECIPIENT INFO */
+.recipient-info-panel {
+	background-color: #F8F8F8;
+	padding: 0 15px;
+	border-radius: 5px;
+	padding-bottom: 10px;
+}
+
+.recipient-info-row {
+	padding: 10px 0;
+}
+
+.recipient-info-row:first-child {
+	border-bottom: 1px solid #E3E3E3; 
+}
+
+.recipient-info-panel h4 {
+	margin: 0;
+	padding: 10px 0;
+	text-align: center;
+}
+
+.recipient-info-panel ul {
+	padding: 0;
+	list-style: none;
+}
+
+.contact-info-table th{
+	width: 120px;
+}
+
+.payment-info-table th{
+	width: 160px;
+}
+
 
 /* TEAM PAYOUTS */
 
@@ -61,5 +98,11 @@
 
 .label {
 	float: right;
-	text-align: text-top;
+	vertical-align: text-top;
+}
+
+.payouts-total-lable {
+	position: absolute;
+	top: 0;
+	right: 25px;
 }

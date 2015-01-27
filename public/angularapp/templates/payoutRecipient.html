@@ -2,68 +2,128 @@
 	<h3 ng-click = 'toggleRecipientData(recipient)'> 
 		<i class = "fa fa-caret-right" ng-hide = "recipient.expanded"></i> 
 		<i class = "fa fa-caret-down"  ng-show = "recipient.expanded"></i> 
-			{{ recipient.name }} | Total owed: ${{recipient.recipientPayoutTotal}}
-
+			{{ recipient.ownerName }} 
+		<span class="label label-danger" ng-show="recipient.recipientPayoutTotal > 0">Total owed: ${{recipient.recipientPayoutTotal}}</span>
+		<span class="label label-success" ng-show="recipient.recipientPayoutTotal == 0">Not owed anything</span>
 	</h3>
-
 	<div ng-show="recipient.expanded" class="recipient-data-container"> 
-		<div ng-repeat= "team in recipient.teams">
-			<h4>
-				<ul class="team-info-list" ng-click="toggleTeamData(team)">
-					<li class="team-info-item">
-						<i class = "fa fa-caret-right" ng-hide="team.expandedTeam"></i> 
-						<i class = "fa fa-caret-down" ng-show="team.expandedTeam"></i>
-					</li>
-					<li class="team-info-item"> {{ team.id }} </li>
-					<li class="team-info-item team-info-name"> {{ team.name }} </li>
-					<li class="team-info-item"> ${{ team.price }}/month </li>
-					<li class="team-info-item"> {{ team.commission }}% </li>
-					<liclass="team-info-item"> Total owed: ${{ team.teamPayoutTotal }}</li>
-				</ul>
-			</h4>
-			<table class="table table-stripped payouts-table" ng-show="team.payouts.length > 0 && team.expandedTeam">
-				<thead>
-					<tr>
-						<th>Status</th>
-						<th>Payout Id</th>
-						<th>Amount</th>
-						<th>Date</th>
-						<th>Action</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr ng-repeat="payout in team.payouts"
-						ng-class="{'danger': payout.status === 'pending', 'success': payout.status === 'processed'}"
-					>
-						<td>
-							<i class="fa fa-check-circle status-icon processed-status-icon" ng-show  = "payout.status === 'processed'"></i>
-							<i class="fa fa-times-circle status-icon unprocessed-status-icon" ng-show  = "payout.status != 'processed'"></i>
-							({{ payout.status }})
-						</td>
-						<td>{{payout.payoutId}}</td>
-						<td>${{payout.amount}}</td>
-						<td>{{payout.dueDate}}</td>
-						<td>
-							<button 
-								class    = "btn btn-success"
-								ng-show  = "payout.status != 'processed'"
-								ng-click = "markProcessed(payout)">
-									<i class="fa fa-check-circle"></i> Mark as processed
-							</button>
-							<button 
-								class    = "btn btn-danger"
-								ng-show  = "payout.status != 'pending'"
-								ng-click = "markPending(payout)">
-									Mark as pending
-							</button>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-			<div 
-				class="alert alert-warning no-payouts-alert" role="alert" 
-				ng-show="team.payouts.length == 0 || team.payouts == null">
-				<h4>This team has no payouts!  They may be cheating the system.</h4>
+		<div class="row">
+			<div class="col-md-8">
+				<div ng-repeat= "team in recipient.teams">	
+					<h4>
+						<ul class="team-info-list" ng-click="toggleTeamData(team)">
+							<li class="team-info-item">
+								<i class = "fa fa-caret-right" ng-hide="team.expandedTeam"></i> 
+								<i class = "fa fa-caret-down" ng-show="team.expandedTeam"></i>
+							</li>
+							<li class="team-info-item"> {{ team.id }} </li>
+							<li class="team-info-item team-info-name"> {{ team.name }} </li>
+							<li class="team-info-item"> ${{ team.price }}/month </li>
+							<li class="team-info-item"> {{ team.commission }}% </li>
+							<li class="team-info-item"> Owed: ${{ team.teamPayoutTotal }}</li>
+						</ul>
+					</h4>
+					<table class="table table-stripped payouts-table" ng-show="team.payouts.length > 0 && team.expandedTeam">
+						<thead>
+							<tr>
+								<th>Status</th>
+								<th>Payout Id</th>
+								<th>Amount</th>
+								<th>Date</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="payout in team.payouts"
+								ng-class="{'danger': payout.status === 'pending', 'success': payout.status === 'processed'}"
+							>
+								<td>
+									<i class="fa fa-check-circle status-icon processed-status-icon" ng-show  = "payout.status === 'processed'"></i>
+									<i class="fa fa-times-circle status-icon unprocessed-status-icon" ng-show  = "payout.status != 'processed'"></i>
+								</td>
+								<td>{{payout.payoutId}}</td>
+								<td>${{payout.amount}}</td>
+								<td>{{payout.dueDate}}</td>
+								<td>
+									<button 
+										class    = "btn btn-success"
+										ng-show  = "payout.status != 'processed'"
+										ng-click = "markProcessed(payout)">
+											<i class="fa fa-check-circle"></i> Mark as processed
+									</button>
+									<button 
+										class    = "btn btn-danger"
+										ng-show  = "payout.status != 'pending'"
+										ng-click = "markPending(payout)">
+											Mark as pending
+									</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div 
+						class="alert alert-warning no-payouts-alert" role="alert" 
+						ng-show="team.payouts.length == 0 || team.payouts == null">
+						<h4>This team has no payouts!  They may be cheating the system.</h4>
+					</div>	
+					
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="recipient-info-panel">
+					
+					<div class="recipient-info-row">
+						<h4>Contact Information</h4>
+						<table class="contact-info-table">
+							<tr>
+								<th> Name: </th>
+								<td> {{recipient.name}} </td>
+							</tr>
+							<tr>
+								<th> Email: </th>
+								<td> {{recipient.email}} </td>
+							</tr>
+							<tr>
+								<th> Phone: </th>
+								<td> {{recipient.phone}} </td>
+							</tr>
+						</table>
+					</div>
+					<div class="recipient-info-row">
+						<h4>Payment Information</h4>
+						<table class="payment-info-table">
+							<tr>
+								<th> Method: </th>
+								<td> {{recipient.method}} </td>
+							</tr>
+							<tr>
+								<th> Bank name: </th>
+								<td> {{recipient.bankName}} </td>
+							</tr>
+							<tr>
+								<th> Belongs to: </th>
+								<td> {{recipient.belongsTo}} </td>
+							</tr>
+							<tr>
+								<th> Account owner name: </th>
+								<td> {{recipient.ownerName}} </td>
+							</tr>
+							<tr>
+								<th> Account type: </th>
+								<td> {{recipient.type}} </td>
+							</tr>
+							<tr>
+								<th> Account number: </th>
+								<td> {{recipient.recipient}} </td>
+							</tr>
+							<tr>
+								<th> Routing number: </th>
+								<td> {{recipient.routing}} </td>
+							</tr>
+						</table>
+					</div>
+					
+				</div>
 			</div>
 		</div>
 	

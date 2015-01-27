@@ -3,7 +3,16 @@ sprongoPayouts.controller('payoutsController', ['$scope', function($scope){
 	// DATA AND SETUP
 	$scope.recipients = [
 		{ 
-			name         : 'Todd M Kelly',
+			name         : 'Todd Kelly',
+			email        : 'todd.kelly@squaw.com',
+			phone        : '5305636222',
+			method       : 'us_bank',
+			bankName     : 'Bank of America',
+			belongsTo    : 'me',
+			ownerName    : 'Todd M Kelly',
+			type         : 'checkings',
+			routing      : '1211000358',
+			recipient    : '000609466721',
 			teams        : 
 				[
 					{
@@ -57,7 +66,16 @@ sprongoPayouts.controller('payoutsController', ['$scope', function($scope){
 		},
 
 		{ 
-			name         : 'teamshiffrin, LLC',
+			name         : 'jeffrey s. shiffrin',
+			email        : 'jss54@me.com',
+			phone        : '970-343-0537',
+			method       : 'us_bank',
+			bankName     : 'Everbank',
+			belongsTo    : 'organization',
+			ownerName    : 'teamshiffrin, LLC',
+			type         : 'checkings',
+			routing      : '063092110',
+			recipient    : '0760055874',
 			teams        : 
 				[
 					{
@@ -72,7 +90,16 @@ sprongoPayouts.controller('payoutsController', ['$scope', function($scope){
 		},
 
 		{ 
-			name         : 'Blue Mountain Racing Association',
+			name         : 'Amato DePaulo or Tom Yen',
+			email        : 'racing@skibluemt.com',
+			phone        : '610-826-7700 ext.1236',
+			method       : 'us_bank',
+			bankName     : 'Susquehanna',
+			belongsTo    : 'organization',
+			ownerName    : 'Blue Mountain Racing Association',
+			type         : 'checkings',
+			routing      : '031309123',
+			recipient    : '10006389992',
 			teams        : 
 				[
 					{
