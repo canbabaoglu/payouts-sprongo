@@ -147,80 +147,6 @@ sprongoPayouts.controller('payoutsController', ['$scope', function($scope){
 					}
 				]
 		},
-		/*
-		{ 
-			name         : 'Diamond Peak Ski Education Foundation',
-			teams        : 
-				[
-					{
-						id    : 31350,
-						name  : 'DPST U16',
-						price      : 5.00,
-						commission : 15
-					},
-					{
-						id    : 31949,
-						name  : 'DPST FIS',
-						price      : 5.00,
-						commission : 15
-					},
-					{
-						id    : 32153,
-						name  : 'DPST U14',
-						price      : 5.00,
-						commission : 15
-					},
-					{
-						id    : 35798,
-						name  : 'DPST U12/U10',
-						price      : 5.00,
-						commission : 15
-					},
-				], 
-			playlists    : [ ], 
-			expanded     : false
-		},
-		{ 
-			name         : 'Mammoth Mountain community Foundation',
-			teams        : 
-				[
-					{
-						id    : 31099,
-						name  : 'Mammoth FIS Team',
-						price      : 5.00,
-						commission : 15
-					}
-				], 
-			playlists    : [ ], 
-			expanded     : false
-		},
-		{ 
-			name         : 'Sun Valley Ski Education Foundation',
-			teams        : 
-				[
-					{
-						id    : 30790,
-						name  : 'SVSEF U16 Alpine Team',
-						price      : 5.00,
-						commission : 15
-					},
-					{
-						id    : 36500,
-						name  : 'SVSEF U14',
-						price      : 5.00,
-						commission : 15
-					},
-					{
-						id    : 30791,
-						name  : 'SVSEF U18/U21 Team',
-						price      : 5.00,
-						commission : 15
-					}
-				], 
-			playlists    : [ ], 
-			expanded     : false
-		}
-		*/
 		
 	];
 
@@ -277,6 +203,7 @@ sprongoPayouts.controller('payoutsController', ['$scope', function($scope){
 
 	// Function to calculate recipientPayoutTotal, teamPayoutTotal
 	function calculateTotalPayouts() {
+		$scope.payoutTotal = 0;
 		for (var i = 0; i < $scope.recipients.length; i++) {
 			
 			$scope.recipients[i].recipientPayoutTotal = 0;
@@ -296,6 +223,10 @@ sprongoPayouts.controller('payoutsController', ['$scope', function($scope){
 			$scope.payoutTotal += $scope.recipients[i].recipientPayoutTotal;
 
 		};
+	}
+
+	function resetTotalPayouts() {
+			
 	}
 
 
