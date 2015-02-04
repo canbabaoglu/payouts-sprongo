@@ -225,9 +225,4 @@ sprongoPayouts.controller('payoutsController', ['$scope', function($scope){
 		};
 	}
 
-	function resetTotalPayouts() {
-			
-	}
-
-
 }]);
